@@ -4,14 +4,14 @@
 - Es ist sehr rudimentär aber sollte halbwegs in jedem beliebigen Verzeichnis funktionieren.
 
 # Installation
-1. Das Script `averzeichnis.sh` in `~/bin` ablegen.
+1. Das Script `2averzeichnis` und den Link `2averzeichnissimple` in `~/bin` ablegen.
 2. `nano ~/.bashrc` 
 3. `export PATH="$PATH:$HOME/bin"` in die Datei schreiben.
-4. (Optional) `alias avb="~/bin/averzeichnis.sh"`
+4. (Optional) `alias avb="~/bin/2averzeichnis"`
 
 # Verwendung
 - Falls der 4. optionale Schritt durchgeführt wurde, einfach `avb` in einem beliebigen Verzeichnis tippen.
-- Sonst mit `averzeichnis.sh` aufrufen.
+- Sonst mit `2averzeichnis` aufrufen.
 
 # Parameter
 - Das Script akzeptiert ein Verzeichnis als optionalen Parameter.
@@ -21,4 +21,7 @@
 - `avb /`
 - `avb /var`
 - `avb ~/bin`
-- `averzeichnis.sh`
+- `2averzeichnis`
+- `2averzeichnis --help`
+- `avb --help`
+- `2averzeichnissimple`
