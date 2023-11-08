@@ -1,4 +1,5 @@
 # verzeichnis-script
+- **Dieses Script durchsucht das Verzeichnis, in dem man sich befindet und gibt dessen Inhalte (getrennt mit '"') aus.**
 - Dieses Script war eine Hausaufgabe bei der FV.
 - Es ist sehr rudimentär aber sollte halbwegs in jedem beliebigen Verzeichnis funktionieren.
 
