@@ -6,7 +6,7 @@
 1. Das Script `averzeichnis.sh` in `~/bin` ablegen.
 2. `nano ~/.bashrc` 
 3. `export PATH="$PATH:$HOME/bin"` in die Datei schreiben.
-4. (Optional) `alias avb="~/bin/averzeichnis.sh`
+4. (Optional) `alias avb="~/bin/averzeichnis.sh"`
 
 # Verwendung
 - Falls der 4. optionale Schritt durchgeführt wurde, einfach `avb` in einem beliebigen Verzeichnis tippen.
