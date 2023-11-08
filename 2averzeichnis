@@ -1,0 +1,28 @@
+#!/bin/bash
+VERZEICHNIS="$PWD"
+PARAMETER=$(echo "$1" | tr "~" "$HOME")
+if [ ! -d "$PARAMETER" ] && [ "$PARAMETER" != '' ]; then 
+    echo "###############################################################   #######"
+    echo "# Parameter \""$PARAMETER"\" ist kein Verzeichnis."
+    echo "# Bitte geben sie ein gültiges Verzeichnis an.                #     ### " 
+    echo "# Lassen Sie den Parameter weg,                               #      #   "
+    echo "# um Ihr derzeitiges Verzeichnis als Ausgangspunkt zu nutzen. #     ###"
+    echo "###############################################################     ### "
+    exit 
+fi
+if [ -d "$PARAMETER" ]; then                 
+    if [[ "$PARAMETER" != /* ]]; then        
+        VERZEICHNIS=$(realpath "$PARAMETER") 
+    else
+        VERZEICHNIS="$PARAMETER" 
+    fi
+fi
+
+if [ "$0" == "2averzeichnis" -o "$0" == "/home/rlimberger/bin/2averzeichnis" ]; then
+find "$VERZEICHNIS" | tr / \" | sed 's/^"//g'
+echo "Advanced mode"
+else
+find "$VERZEICHNIS" -xdev | tr / \" | sed 's/^"//g'
+echo "Simple mode"
+fi
+echo "$0"
