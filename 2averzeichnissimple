@@ -1,0 +1,74 @@
+#!/bin/bash
+VERZEICHNIS="$PWD"
+RED='\033[0;31m'    #
+GREEN='\033[0;32m'  # Farben werden festgelegt
+NC='\033[0m'        #
+# -----------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------
+if [ "$1" == "--help" ];then
+echo "
+############################################################################################
+
+Diese Utility durchsucht das Verzeichnis, in der sie augerufen wurde und stellt dieses dar.
+
+Sie akzeptiert ein Verzeichnis als optionalen Positionsparameter. 
+
+Hilfe bei Installation:
+    1. Das Script 2averzeichnis in ~/bin ablegen.
+    2. nano ~/.bashrc
+    3. export PATH=\"\$PATH:\$HOME/bin\" in die Datei schreiben.
+    4 .\(Optional\) alias avb=\"~/bin/2averzeichnis\"
+
+############################################################################################"
+
+exit
+
+# -----------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------
+
+fi
+PARAMETER=$(echo "$1" | tr "~" "$HOME")                                                
+if [ ! -d "$PARAMETER" ] && [ "$PARAMETER" != '' ]; then 
+    echo "###############################################################   #######"
+    echo "# Parameter \""$PARAMETER"\" ist kein Verzeichnis."
+    echo "# Bitte geben sie ein gültiges Verzeichnis an.                #     ### " 
+    echo "# Lassen Sie den Parameter weg,                               #      #   "
+    echo "# um Ihr derzeitiges Verzeichnis als Ausgangspunkt zu nutzen. #     "
+    echo "# Benutzen Sie '2averzeichnis --help' um mehr zu erfahren     #     ###   "        
+    echo "###############################################################     ### "
+    exit 
+fi
+
+# -----------------------------------------------------------------------------------   #############################
+                                                                                        # Verarbeitung der Parameter#
+# -----------------------------------------------------------------------------------   #############################
+
+if [ -d "$PARAMETER" ]; then                 
+    if [[ "$PARAMETER" != /* ]]; then        
+        VERZEICHNIS=$(realpath "$PARAMETER") 
+    else
+        VERZEICHNIS="$PARAMETER" 
+    fi
+fi
+
+# -----------------------------------------------------------------------------------
+
+if [ "$1" != "--help" ];then
+# -----------------------------------------------------------------------------------#
+                                                                                     # 
+if [ "$0" == "2averzeichnis" -o "$0" == ""$HOME"/bin/2averzeichnis" ]; then          # Prüfen, mit welchem Namen das Script aufgerufen wurde
+find "$VERZEICHNIS" | tr / \" | sed 's/^"//g'                                        # Falls mit dem Namen '2averzeichnis', dann alle Dateisysteme durchsuchen.   
+echo -e "${RED}Using advanced mode${NC}"                                             # Information über die Ausführungsart geben. 
+else                                                                                 #
+find "$VERZEICHNIS" -xdev | tr / \" | sed 's/^"//g'                                  # Falls mit alternativen Namen aufgerufen, nur das aktuelle Dateisystem durchsuchen.
+echo -e "${GREEN}Using simple mode${NC}"                                             # Information über die Ausführungsart geben.
+fi                                                                                   #
+                                                                                     #
+# -----------------------------------------------------------------------------------#
+fi
+
+
+
+
